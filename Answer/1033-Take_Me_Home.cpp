@@ -22,7 +22,7 @@ signed main()
         danger[i] = ws;
         ws -= power[i] - power[i + 3];
     }
-    //find danger using window slide
+    //find danger using sliding window
 
     sort(danger.begin(), danger.end());
 
