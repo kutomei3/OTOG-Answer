@@ -16,7 +16,7 @@ signed main()
 
     set<int, greater<int>> ans;
 
-    int all_sub = 1 << n;
+    int all_sub = 1 << n; //equal to 2^n
 
     ans.insert(0);
     for (int i = 1; i < all_sub; i++) {
