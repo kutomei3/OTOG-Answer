@@ -30,6 +30,7 @@ signed main()
 
         ans.insert(stoll(sub_num));
     }
+    //chack all subset
 
     for (auto& p : ans) cout << p << '\n';
 
