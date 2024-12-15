@@ -12,8 +12,7 @@ int main() {
     string s;
     cin >> s;
 
-    if (fuc(s, 0, s.size() - 1)) cout << "yes";
-    else cout << "no";
+    cout << (fuc(s, 0, s.size() - 1) ? "yes" : "no");
     
     return 0;
 }
