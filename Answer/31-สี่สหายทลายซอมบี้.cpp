@@ -27,3 +27,5 @@ int main()
 
     return 0;
 }
+
+//can be solve in O(n) no need O(logN)
