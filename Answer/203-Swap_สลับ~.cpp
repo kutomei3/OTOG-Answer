@@ -6,24 +6,20 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(0);
 
-    int n, m, x, y;
+    int n, q, l, r;
 
-    cin >> n >> m;
+    cin >> n >> q;
 
     vector<int> all(n);
+    for (int i = 0; i < n; i++) cin >> all[i];
 
-    for (int i = 0; i < n; i++) {
-        cin >> all[i];
+    while (q--) 
+    {
+        cin >> l >> r;
+        swap(all[--l], all[--r]);
     }
 
-    for (int i = 0; i < m; i++) {
-        cin >> x >> y;
-        swap(all[--x], all[--y]);
-    }
-
-    for (const int &p : all) {
-        cout << p << ' ';
-    }
+    for (auto& p : all) cout << p << ' ';
 
     return 0;
 }
