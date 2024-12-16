@@ -67,3 +67,4 @@ signed main()
 }
 
 //ngl but sliding window is too hard and complex
+//prefix solution is enough
