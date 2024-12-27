@@ -19,4 +19,4 @@ int main()
     return 0;
 }
 
-//if you cant do this your cooked bro 💀
+//if you cant solve this your cooked bro 💀
