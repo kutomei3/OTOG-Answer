@@ -48,4 +48,4 @@ signed main()
     return 0;
 }
 
-//i dont want unordered_map >:)
+//unordered_map = memory exceed >:)
