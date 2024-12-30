@@ -41,6 +41,7 @@ int main()
         int sd = abs(all[1][0] - p.first) + abs(all[1][1] - p.second);
         int td = abs(all[2][0] - p.first) + abs(all[2][1] - p.second);
         int fd = abs(all[3][0] - p.first) + abs(all[3][1] - p.second);
+        //greedy -> who want binary search?
 
         if (sd == all[1][2] && td == all[2][2] && fd == all[3][2]) {
             cout << p.first << ' ' << p.second; 
