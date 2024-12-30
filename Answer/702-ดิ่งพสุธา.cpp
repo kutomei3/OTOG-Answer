@@ -33,7 +33,7 @@ int main()
         apos.push_back({sx + x * -1, sy + y * -1});
         apos.push_back({sx + y, sy + x * -1});
 
-        //BIG W for complex number :)
+        //BIG W for complex number :O
     }
 
     for (auto& p : apos) 
