@@ -42,14 +42,12 @@ int main()
     }
 
     int ans = 0;
-    for (int i = 0; i <= min(400, r); i++) {
+    for (int i = 0; i <= min(400, r); i++) 
         ans += dp[n - 1][m - 1][i];
-        ans %= mod;
-    }
 
-    cout << ans;
+    cout << ans % mod;
 
     return 0;
 }
 
-// 3d vector :P
+//3d vector :P
