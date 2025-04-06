@@ -19,7 +19,7 @@ signed main()
     vector<pair<int, int>> af(f + 1);
     for (int i = 1; i <= f; i++) {
         int u, v;
-        cin >> u >> v;
+        scanf("%lld %lld", &u, &v);
 
         af[i] = {u, v};
     }
