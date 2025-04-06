@@ -33,16 +33,16 @@ signed main()
     cin.tie(0);
 
     int n, m, g;
-    string as, bs;
-    cin >> n >> m >> as >> bs >> g;
+    char as[102], bs[102];
+    scanf("%lld %lld %s %s %lld", &n, &m, as, bs, &g);
 
     unordered_map<string, int> nm;
     vector<int> sst(n);
-    
+
     for (int i = 0; i < n; i++) {
-        string u;
+        char u[102];
         int v;
-        cin >> u >> v;
+        scanf("%s %lld", u, &v);
 
         nm[u] = i;
         sst[i] = v;
@@ -50,13 +50,13 @@ signed main()
 
     vector<vector<pair<int, int>>> ap(n);
     for (int i = 0; i < m; i++) {
-        string u, v;
+        char u[102], v[102];
         int w;
-        cin >> u >> v >> w;
+        scanf("%s %s %lld", u, v, &w);
 
         int ui = nm[u];
         int vi = nm[v];
-        
+
         ap[ui].push_back({w, vi});
         ap[vi].push_back({w, ui});
     }
@@ -72,7 +72,7 @@ signed main()
         else l = mid + 1;
     }
 
-    cout << l << ' ' << av;
+    printf("%lld %lld\n", l, av);
 
     return 0;
 }
