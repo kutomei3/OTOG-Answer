@@ -62,3 +62,5 @@ int main()
 
     return 0;
 }
+
+//this is a old solution pls use kruskal instead of prim
