@@ -1,45 +1,39 @@
 /**
  * Author: kutomei3
- * date: 6-4-2025
+ * date: 7-4-2025
 **/
 
 #include <bits/stdc++.h>
 using namespace std;
-
-signed main() 
+ 
+#define int long long
+ 
+signed main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-
+    cin.tie(0);
+ 
     int n;
     cin >> n;
 
     vector<int> vec(n);
     for (auto& p : vec) cin >> p;
 
-    int arr[n][n];
+    vector<int> dp(n + 1);
     for (int i = 0; i < n; i++) {
-        int cm = 0, un = 0;
+        int mx = 0, un = 0;
         map<int, bool> mp;
         for (int j = i; j < n; j++) {
-            cm = max(vec[j], cm);
+            mx = max(mx, vec[j]);
             if (!mp[vec[j]]) {
                 un++;
                 mp[vec[j]] = true;
             }
-            arr[i][j] = un * cm;
+            dp[j + 1] = max(dp[j + 1], dp[i] + un * mx);
         }
     }
 
-    vector<int> dp(n, 0);
-    for (int i = 0; i < n; i++) {
-        dp[i] = arr[0][i];
-        for (int j = 0; j < i; j++) {
-            dp[i] = max(dp[i], dp[j] + arr[j + 1][i]);
-        }
-    }
-
-    cout << dp[n - 1];
+    cout << dp[n];
 
     return 0;
 }
