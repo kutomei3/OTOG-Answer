@@ -1,38 +1,20 @@
+/**
+ * Author: kutomei3
+ * date: 10-4-2025
+**/
+
 #include <bits/stdc++.h>
 using namespace std;
 
-bool can(vector<vector<pair<int, int>>> &allp, int m, int k)
-{
-    int n = allp.size();
+#define int long long
 
-    vector<bool> vis(n, false);
-    int ct = 0;
-    
-    for (int i = 1; i < n; i++) 
-    {
-        if (vis[i]) continue;
-        ct++;
+vector<int> pa(100001);
+int fi(int x) {
+    if (pa[x] == x) return x;
+    return pa[x] = fi(pa[x]);
+}
 
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        pq.push({0, i});
-
-        while (pq.size())
-        {
-            auto [dist, node] = pq.top();
-            pq.pop();
-
-            vis[node] = true;
-
-            for (auto& [weg, nei] : allp[node]) 
-                if (weg >= m && !vis[nei]) pq.push({weg, nei});
-        }
-    }
-
-    return ct > k;
-}   
-
-
-int main()
+signed main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
@@ -40,27 +22,34 @@ int main()
     int n, m, k;
     cin >> n >> m >> k;
 
-    vector<vector<pair<int, int>>> allp(n + 1);
-    while (m--)
-    {
+    for (int i = 1; i <= n; i++) pa[i] = i;
+
+    priority_queue<array<int, 3>> pq;
+    for (int i = 0; i < m; i++) {
         int u, v, w;
         cin >> u >> v >> w;
-        allp[u].push_back({w, v});
-        allp[v].push_back({w, u});
+        pq.push({w, u, v});
     }
 
-    int l = 0;
-    int h = 10e9 + 1;
+    priority_queue<int, vector<int>, greater<int>> wu;
+    int va = 0;
+    while (pq.size())
+    {
+        auto [w, u, v] = pq.top();
+        pq.pop();
 
-    while (h > l) {
-        int mid = (h + l) / 2;
-        if (can(allp, mid, k)) h = mid;
-        else l = mid + 1;
+        if (fi(u) != fi(v)) {
+            pa[fi(u)] = fi(v);
+            wu.push(w);
+            va++;
+            if (va == n - 1) break;
+        }
     }
 
-    cout << l - 1;
+    for (int i = 1; i <= n; i++) if (pa[i] == i) k--;  
+    while (k--) wu.pop();
+
+    cout << wu.top();
 
     return 0;
 }
-
-//this is a old solution pls use kruskal instead of prim
