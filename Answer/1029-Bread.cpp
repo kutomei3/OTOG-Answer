@@ -1,47 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-
+int main() {
     int n;
-    cin >> n;
-
-    vector<int> br1(n), br2(n);
-
-    for (int i = 0; i < n; i++) cin >> br1[i];
-    for (int i = 0; i < n; i++) cin >> br2[i];
-
-    vector<bool> vis(n, false);
-    vector<int> ans(n);
-
-    bool bak = false;
-    int last = n - 1;
-    int fir = 0;
-
+    scanf("%d", &n);
+    
+    int a[n], b[n];
+    for (auto& p : a) scanf("%d", &p);
+    for (auto& p : b) scanf("%d", &p);
+    
+    vector<int> lef, vis(n, 0);
+    int p = 0;
     for (int i = 0; i < n; i++) {
-        if (!vis[br1[i]]) {
-            vis[br1[i]] = true;
-
-            if (bak) ans[last--] = br1[i];
-            else ans[fir++] = br1[i];
-        }
-        bak = !bak;
-
-        if (!vis[br2[i]]) {
-            vis[br2[i]] = true;
-
-            if (bak) ans[last--] = br2[i];
-            else ans[fir++] = br2[i];
-        }
-        bak = !bak;
+        if (p == n) break;
+        if (a[i] == b[p]) printf("%d\n", a[i]);
+        else lef.push_back(a[i]);
+        vis[a[i]] = 1;
+        while (p != n && vis[b[p]]) p++;
     }
-    //can be recur here
-
-    for (auto& p : ans) cout << p << '\n';
-
+    
+    for (int i = lef.size() - 1; i >= 0; i--) printf("%d\n", lef[i]);
+    
     return 0;
 }
-//greedy solution
+
+/*
+5 
+0 2 4 1 3 
+4 0 3 1 2
+
+0 2 4 1 3 3 1 4 2 0
+
+*/
